@@ -1,5 +1,5 @@
 import request from 'supertest';
-import app from '../app.es';
+import app from '../dist/app.js';
 
 function requestTest(){
   return request(app.listen());
@@ -7,7 +7,7 @@ function requestTest(){
 
 describe('测试路由', function() {
   it('点赞', function(done) {
-    request(app)
+    requestTest()
       .get('/update')
       .expect(200)
       .end(function(err,res){

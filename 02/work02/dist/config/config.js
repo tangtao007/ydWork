@@ -13,5 +13,5 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var CONFIG = new Map();
 CONFIG.set('port', 3000);
 CONFIG.set('staticDir', _path2.default.join(__dirname, '..', 'public'));
-CONFIG.set('viewDir', _path2.default.join(__dirname, '..', 'views'));
+CONFIG.set('viewDir', _path2.default.join(__dirname, '..', 'src/views'));
 exports.default = CONFIG;

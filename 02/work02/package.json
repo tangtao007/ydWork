@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node app.js",
+    "start": "babel-node ./src/app.js",
     "test-babel": "babel tests/server.js -o tests/server.es.js",
-    "compile": "babel ./ -d dist",
+    "compile": "babel ./src -d dist",
+    "config": "babel ./config/config.js -d dist",
     "babel": "babel public/scripts/index.js -o public/scripts/index.es.js",
     "app": "babel app.js -o app.es.js",
     "mocha": "mocha tests/server.es.js"
@@ -27,6 +28,7 @@
     "karma-phantomjs-launcher": "^1.0.4",
     "mocha": "^4.0.1",
     "phantomjs": "^2.1.7",
+    "selenium-webdriver": "^3.6.0",
     "supertest": "^3.0.0"
   },
   "dependencies": {

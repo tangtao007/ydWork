@@ -4,7 +4,7 @@ var _supertest = require('supertest');
 
 var _supertest2 = _interopRequireDefault(_supertest);
 
-var _app = require('../app.es');
+var _app = require('../dist/app.js');
 
 var _app2 = _interopRequireDefault(_app);
 
@@ -16,7 +16,7 @@ function requestTest() {
 
 describe('测试路由', function () {
   it('点赞', function (done) {
-    (0, _supertest2.default)(_app2.default).get('/update').expect(200).end(function (err, res) {
+    requestTest().get('/update').expect(200).end(function (err, res) {
       if (res.data == 1) {
         return done(err);
       }
