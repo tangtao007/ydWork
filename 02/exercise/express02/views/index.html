@@ -5,5 +5,11 @@
 <script type="text/javascript" src="script/index.js"></script>
 {% endblock %}
 {% block content %}
-	<p>{{data}}</p>
+	<form role="form">
+	  <div class="form-group">
+	    <label for="userName">用户名</label>
+	    <input type="text" class="form-control" id="userName" placeholder="用户名">
+	  </div>
+	  <button  id="btnsubmit" type="submit" class="btn btn-info">提交</button>
+	</form>
 {% endblock %}
