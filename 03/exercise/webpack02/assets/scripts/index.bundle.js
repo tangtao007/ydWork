@@ -1,0 +1,1 @@
+webpackJsonp([1],[function(t,e,n){"use strict";var o=n(1);n(2),n.e(0).then(n.bind(null,3)).then(function(t){console.log(t)}),console.log(o.data)},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var o=new Map;o.set("data","Index init");e.test=function(){console.log("test treeShaking")},e.data=o.get("data")},function(t,e){}],[0]);
