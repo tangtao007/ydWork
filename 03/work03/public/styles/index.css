@@ -1,0 +1,138 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+        height: 100%;
+        overflow: hidden;
+}
+.containe{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 300px;
+  margin-top: -150px;
+  margin-left: -150px
+}
+.hand{
+  position: relative;
+  width: 300px;
+  height: 230px;
+  background-color: #f3c5ad;
+  -webkit-transform: rotate(90deg);
+  border-radius: 30px;
+  cursor: pointer;
+  border: 1px solid #8c3e15;
+}
+.hand .arm{
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background-color: #f3c5ad;
+  left: 18%;
+      bottom: -80%;
+}
+.figger{
+  position: absolute;
+  right: 0;
+  bottom: 80%;
+  width: 75px;
+  height: 75px;
+  position: absolute;
+  background-color: #f3c5ad;
+  border-top-left-radius: 75px;
+  border-top-right-radius: 75px;
+  border-left: 1px solid #b9511b;
+  border-right: 1px solid #b9511b;
+  border-top: 1px solid #b9511b;
+}
+.figger.finger01{
+  right: -1px;
+}
+.figger.finger02{
+  right: 74px;
+}
+
+.figger.finger03{
+  right: 149px;
+}
+
+.figger.finger04{
+  right: 224px;
+}
+
+.figger.finger05{
+  right: 299px;
+}
+.figger.finger05.thumb{
+  height: 150px;
+  transform-origin: left bottom;
+  right: 217px;
+  transform: rotate(-65deg);
+  bottom: 10px;
+  border-right: 0;
+}
+.hand .figger:before,
+.hand .figger:after{
+  content: "";
+  position: absolute;
+      top: 5%;
+      left: 7%;
+      width: 85%;
+      height: 60px;
+      border-top-left-radius: 75px;
+      border-top-right-radius: 75px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 100%);
+      transition: .2s;
+}
+
+.hand .figger:nth-of-type(5):after {
+        display: block;
+    }
+
+.hand .figger.finger05.thumb:before {
+        top: 2%;
+    }
+
+    .hand .thumb:after{
+  height: 37.5px;
+  top: 50%;
+   background: linear-gradient(to bottom, rgba(185, 81, 27, 0.2) 0%, rgba(185, 81, 27, 0) 100%);
+      display: none;
+}
+.hand .figger  .thumb:after{
+  height: 37.5px;
+  top: 50%;
+   background: linear-gradient(to bottom, rgba(185, 81, 27, 0.2) 0%, rgba(185, 81, 27, 0) 100%);
+      display: none;
+}
+
+.num {
+      display: block !important;
+      -webkit-animation: neon2 1.5s ease-in-out alternate;
+      animation: neon2 1.5s ease-in-out alternate;
+      -webkit-animation-iteration-count: 1;
+      /* Safari 和 Chrome */
+      font-size: 40px;
+      color: #FF1177;
+      position: absolute;
+      right: 10%;
+      top: 10%;
+    }
+
+.hide{
+  display: block;
+}
+
+@-webkit-keyframes neon2 {
+    from {
+        opacity: 0;
+        -webkit-transform: translateY(-20px);
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF1177, 0 0 70px #FF1177, 0 0 80px #FF1177, 0 0 100px #FF1177, 0 0 150px #FF1177;
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translateY(0) text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF1177, 0 0 35px #FF1177, 0 0 40px #FF1177, 0 0 50px #FF1177, 0 0 75px #FF1177;
+    }
+}

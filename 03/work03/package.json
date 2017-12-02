@@ -1,0 +1,46 @@
+{
+  "name": "work",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node ./src/app.js",
+    "test-babel": "babel tests/server.js -o tests/server.es.js",
+    "compile": "babel ./src -d dist",
+    "config": "babel ./config/config.js -d dist",
+    "babel": "babel public/scripts/index.js -o public/scripts/index.es.js",
+    "app": "babel app.js -o app.es.js",
+    "mocha": "mocha tests/server.es.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
+    "jasmine-core": "^2.8.0",
+    "karma": "^1.7.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-cli": "^1.0.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "mocha": "^4.0.1",
+    "phantomjs": "^2.1.7",
+    "selenium-webdriver": "^3.6.0",
+    "supertest": "^3.0.0"
+  },
+  "dependencies": {
+    "koa": "^2.4.1",
+    "koa-simple-router": "^0.2.0",
+    "koa-static": "^4.0.2",
+    "koa-swig": "^2.2.1",
+    "path": "^0.12.7",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2",
+    "x-tag": "^1.5.11"
+  }
+}
