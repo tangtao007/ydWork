@@ -4,7 +4,7 @@ const indexController = {
   index(){    
     return async ctx =>{
       ctx.body = await ctx.render('../views/index',{
-        title:"大拇指点赞"
+        title:"大拇指点赞G"
       });
     };
   },

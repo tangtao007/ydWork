@@ -1,5 +1,11 @@
+import PraiseButton from './indexPraise.es';
+import {
+  setTimeout,
+  clearTimeout
+} from 'timers';
+let f = new PraiseButton();
 xtag.register('x-praise', {
-  content:`<div class="containe">
+  content: `<div class="containe">
   <div class="hand" id="thumb">
     <div class="figger finger01"></div>
     <div class="figger finger02"></div>
@@ -8,7 +14,8 @@ xtag.register('x-praise', {
     <div class="figger finger05 thumb"></div>
     <div class="arm"></div>
   </div>
-</div>`,
+</div>
+<span class="hide" id="animation">+1</span>`,
   lifecycle: {
     created: function () {
       /* Called when the custom element is created */
@@ -25,9 +32,7 @@ xtag.register('x-praise', {
     }
   },
   methods: {
-    parseDom(arg) {
-
-      　　
+    parseDom(arg) {　　
       var objE = document.createElement("div");
 
       　　
@@ -35,9 +40,28 @@ xtag.register('x-praise', {
 
       　　
       return objE.firstChild;
+    },
+    praise: function () {
+      let _this = this;
+      let promiseClick = f.clickAction();
+      let animation = _this.querySelector("#animation");
+      animation.className = "hide num";
+      setTimeout(function () {
+        animation.className = "hide";
+      }, 800)
     }
   },
   events: {
-    tap: function () {}
+    click: function (e) {
+      let _this = this;
+      if (e.target.id == "thumb") {
+        if (_this.t) {
+          clearTimeout(_this.t);
+        }
+        _this.t = setTimeout(() => {
+          _this.praise();
+        }, 500)
+      }
+    }
   }
 });
