@@ -1,10 +1,19 @@
 {
-  "dependencies": {},
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "lodash": "^4.17.5",
+    "react": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2"
+  },
   "devDependencies": {
-    "css-loader": "^0.28.7",
+    "css-loader": "^0.28.9",
+    "extract-text-webpack-plugin": "^3.0.2",
     "html-webpack-plugin": "^2.30.1",
-    "style-loader": "^0.19.0",
-    "webpack": "^1.15.0"
+    "style-loader": "^0.19.1",
+    "webpack": "^3.10.0",
+    "webpack-bundle-analyzer": "^2.10.0",
+    "webpack-md5-hash": "0.0.6"
   },
   "scripts": {
     "webpack": "webpack"
