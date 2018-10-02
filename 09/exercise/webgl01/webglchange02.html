@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>旋转</title>
+  <script src="lib.js"></script>
+</head>
+<body>
+  <canvas id="web03" width="500" height="500"></canvas>
+  <script>
+    var canvs = document.getElementById("web03");
+    var gl = canvs.getContext("webgl");
+    // 顶点坐标
+    var VERTEX_SHADER=""+
+        "attribute vec4 a_pos;" +
+        "uniform float u_sinB,u_cosB;"+
+        "void main(){"+
+        "gl_Position.x=a_pos.x*u_cosB-a_pos.y*u_sinB;" +
+        "gl_Position.y=a_pos.x*u_cosB+a_pos.y*u_cosB;" +
+        "gl_Position.z=a_pos.z;" +
+        "gl_Position.w=a_pos.w;" +
+        "}";
+
+    var FRAG_SHADER=""+
+        "void main(){"+
+        "gl_FragColor=vec4(1.0,0.0,0.0,1.0);"+
+        "}";
+
+    var program = initShader(gl,VERTEX_SHADER,FRAG_SHADER);
+
+    var dataVertices = new Float32Array([
+        0.0,0.0,
+        0.3,0.3,
+        0.6,0.0
+    ]);
+
+    bufferInit(gl,dataVertices,"a_pos",program);
+
+    var angle = 0.0;
+    var sinB = Math.sin(angle/180.0*Math.PI);
+    var cosB = Math.cos(angle/180.0*Math.PI);
+
+    var u_sinB = gl.getUniformLocation(program,"u_sinB");
+    var u_cosB = gl.getUniformLocation(program,"u_cosB");
+    gl.uniform1f(u_sinB,sinB);
+    gl.uniform1f(u_cosB,cosB);
+    gl.clearColor(0.0,0.0,0.0,1.0);
+    gl.clear(gl.COLOR_BUFFER_BIT);// 清屏
+    gl.drawArrays(gl.TRIANGLES,0,3);
+
+  </script>
+</body>
+</html>

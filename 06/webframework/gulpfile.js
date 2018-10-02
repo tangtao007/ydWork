@@ -15,6 +15,7 @@ gulp.task('builddev', () => {
       .pipe(babel({
         babelrc: false,
         "plugins": [
+          "transform-decorators-legacy",
           "babel-plugin-transform-es2015-modules-commonjs"
         ]
       }))

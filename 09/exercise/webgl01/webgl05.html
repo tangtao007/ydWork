@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>绘制一个点代码升级</title>
+  <script src="lib.js"></script>
+</head>
+<body>
+  <canvas id="web03" width="500" height="500"></canvas>
+  <script>
+    var canvs = document.getElementById("web03");
+    var gl = canvs.getContext("webgl");
+    // 顶点坐标
+    var VERTEX_SHADER=""+
+        "attribute vec4 a_pos;"+
+        "void main(){"+
+        "gl_Position=a_pos;" +
+        "gl_PointSize=25.0;" +
+        "}";
+
+    var FRAG_SHADER=""+
+        "void main(){"+
+        "gl_FragColor=vec4(1.0,0.0,0.0,1.0);"+
+        "}";
+
+    /*
+      A.创建缓冲区对象
+      b.绑定缓冲区对象
+      c.将数据写入缓存区
+      d.给缓存去对象分配一个attribute变量
+      e.开启attribute变量
+    */
+    var program = initShader(gl,VERTEX_SHADER,FRAG_SHADER);
+
+    var dataVertices = new Float32Array([
+        0.0,0.0,
+        0.5,0.5,
+        0.5,-0.5,
+        -0.5,-0.5,
+        -0.5,0.5
+    ]);
+
+    var buffer = gl.createBuffer();
+
+    gl.bindBuffer(gl.ARRAY_BUFFER,buffer);
+
+    gl.bufferData(gl.ARRAY_BUFFER,dataVertices,gl.STATIC_DRAW);
+
+    var a_pos = gl.getAttribLocation(program,"a_pos");
+
+    gl.vertexAttribPointer(a_pos,2,gl.FLOAT,false,0,0);
+
+    gl.enableVertexAttribArray(a_pos);
+    // 绘制点
+    //gl.drawArrays(gl.POINTS,0,5);
+
+    // 绘制线，第二个参数是线段顶点的个数
+    //gl.drawArrays(gl.LINES,0,2);
+
+    // 绘制，第二个参数是线段顶点的个数
+    gl.drawArrays(gl.LINE_STRIP,0,3);
+
+  </script>
+</body>
+</html>

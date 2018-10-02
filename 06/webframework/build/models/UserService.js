@@ -6,15 +6,14 @@ Object.defineProperty(exports, "__esModule", {
 
 var _anyPromise = require("any-promise");
 
-class IndexModel {
+let UserService = class UserService {
   constructor() {}
-  getData() {
+  get(id) {
     return new Promise((resolve, reject) => {
       setTimeout(function () {
-        resolve("Hello World");
+        resolve("Hello World" + "[" + id + "]");
       }, 1000);
     });
   }
-}
-
-exports.default = IndexModel;
+};
+exports.default = UserService;

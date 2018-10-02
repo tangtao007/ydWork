@@ -28,10 +28,6 @@ var _awilix = require('awilix');
 
 var _awilixKoa = require('awilix-koa');
 
-var _InitController = require('./controllers/InitController');
-
-var _InitController2 = _interopRequireDefault(_InitController);
-
 var _ErrorHandler = require('./Middlewares/ErrorHandler');
 
 var _ErrorHandler2 = _interopRequireDefault(_ErrorHandler);
@@ -45,21 +41,24 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const app = new _koa2.default();
 // 灵魂IOC容器
 const container = (0, _awilix.createContainer)();
-container.register({
-  // Here we are telling Awilix how to resolve a
-  // userController: by instantiating a class.
-  testService: (0, _awilix.asClass)(_TestService2.default)
-});
 var co = require('co');
 app.context.render = co.wrap((0, _koaSwig2.default)({
   root: _main2.default.viewDir,
   autoescape: true,
   cache: 'memory', // disable, set to false 
   ext: 'html',
-  writeBody: false
-  // varControls:['[[',']]']
+  writeBody: false,
+  varControls: ['[[', ']]']
 }));
 // 关键点 将所有的container的service 服务到每一个路由中去 DI
+// 先把所有的service注册到容器里面来
+container.loadModules([['models/*.js', { register: _awilix.asClass }]], {
+  formatName: 'camelCase',
+  resolverOptions: {
+    lifetime: _awilix.Lifetime.SCOPED
+  }
+});
+//!!! Service中心注入到对应的Controller中心去
 app.use((0, _awilixKoa.scopePerRequest)(container));
 _log4js2.default.configure({
   appenders: { ydlog: { type: 'file', filename: './logs/yd.log' } },
@@ -69,7 +68,9 @@ const logger = _log4js2.default.getLogger('ydlog');
 _ErrorHandler2.default.error(app, logger);
 app.use((0, _koaStatic2.default)(_main2.default.staticDir));
 // 初始化所有的路由
-_InitController2.default.getAllrouters(app, _koaSimpleRouter2.default);
+// app.use的作用：保证ctx上下文的传输
+// InitController.getAllrouters(app,router);
+app.use((0, _awilixKoa.loadControllers)('controllers/*.js', { cwd: __dirname }));
 app.listen(_main2.default.port, () => {
   console.log('server is start');
 });

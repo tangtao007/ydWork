@@ -1,16 +1,16 @@
 import { reject } from "any-promise";
 
-class IndexModel{
+class UserService{
   constructor(){
 
   }
-  getData(){
+  get(id){
     return new Promise((resolve,reject) => {
       setTimeout(function(){
-        resolve("Hello World");
+        resolve("Hello World"+"["+id+"]");
       },1000);
     });
   }
 }
 
-export default IndexModel;
+export default UserService;
