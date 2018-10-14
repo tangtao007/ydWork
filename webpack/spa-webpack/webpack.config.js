@@ -42,6 +42,22 @@ webpackConfig = {
       })
     }
   },
+  optimization:{
+    splitChunks:{
+      cacheGroups:{
+        common:{
+          chunks:"initial",
+          name:"common",
+          minChunks:1,
+          maxInitialRequests:5,
+          minSize:0
+        }
+      }
+    },
+    runtimeChunk:{
+      name:"runtime"
+    }
+  },
   plugins: [
     new WebpackDeepScopeAnalysisPlugin(),
     new MiniCssExtractPlugin({
