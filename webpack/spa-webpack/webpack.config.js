@@ -7,7 +7,14 @@ const _modelflag = (_mode == "production" ? true : false);
 const _mergeConfig = require(`./config/webpack.${_mode}.js`);
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+const smp = new SpeedMeasurePlugin();
+var WebpackBuildNotifierPlugin = require('webpack-build-notifier');
+var ProgressBarPlugin = require('progress-bar-webpack-plugin');
+var DashboardPlugin = require('webpack-dashboard/plugin');
+const setTitle = require('node-bash-title');
 
+setTitle("Webpack cmd");
 const PurifyCSSPlugin = require('purifycss-webpack');
 const glob = require('glob');
 const {
@@ -59,6 +66,13 @@ webpackConfig = {
     }
   },
   plugins: [
+    new DashboardPlugin(),
+    new ProgressBarPlugin(),
+    new WebpackBuildNotifierPlugin({
+      title: "Webpack success!",
+      //logo: path.resolve("./img/favicon.png"),
+      suppressSuccess: true
+    }),
     new WebpackDeepScopeAnalysisPlugin(),
     new MiniCssExtractPlugin({
       filename: _modelflag?'styles/[name].[hash:5].css':"styles/[name].css",
@@ -76,4 +90,4 @@ webpackConfig = {
   ],
 }
 
-module.exports = merge(_mergeConfig, webpackConfig);
+module.exports = smp.wrap(merge(_mergeConfig, webpackConfig));
