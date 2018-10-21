@@ -12,16 +12,20 @@ const smp = new SpeedMeasurePlugin();
 var WebpackBuildNotifierPlugin = require('webpack-build-notifier');
 var ProgressBarPlugin = require('progress-bar-webpack-plugin');
 var DashboardPlugin = require('webpack-dashboard/plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
 const setTitle = require('node-bash-title');
-
 setTitle("Webpack cmd");
-const PurifyCSSPlugin = require('purifycss-webpack');
+// const PurifyCSSPlugin = require('purifycss-webpack');
 const glob = require('glob');
 const {
   join
 } = require('path');
-const setIterm2Badge = require('set-iterm2-badge');
-setIterm2Badge("开发环境");
+// const setIterm2Badge = require('set-iterm2-badge');
+// setIterm2Badge("开发环境");
+// 自动管理首屏
+const loading = {
+  html:"加载中"
+}
 webpackConfig = {
   module: {
     rules: [{
@@ -66,6 +70,7 @@ webpackConfig = {
     }
   },
   plugins: [
+    new ManifestPlugin(),
     new DashboardPlugin(),
     new ProgressBarPlugin(),
     new WebpackBuildNotifierPlugin({
@@ -80,7 +85,8 @@ webpackConfig = {
     }),
     new HtmlWebpackPlugin({
       filename:"index.html",
-      template:"src/index.html"
+      template:"src/index.html",
+      loading
     }),
     new CleanWebpackPlugin(["dist"]),
     // new PurifyCSSPlugin({
@@ -91,3 +97,4 @@ webpackConfig = {
 }
 
 module.exports = smp.wrap(merge(_mergeConfig, webpackConfig));
+//module.exports = merge(_mergeConfig, webpackConfig);

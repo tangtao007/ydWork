@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack --mode development",
     "prod": "webpack --mode production",
+    "chart": "webpack --mode development --profile --json > stats.json",
     "dev:server": "webpack-dev-server --mode development"
   },
   "keywords": [],
@@ -31,6 +32,7 @@
     "webpack-dashboard": "^2.0.0",
     "webpack-deep-scope-plugin": "^1.6.0",
     "webpack-dev-server": "^3.1.9",
+    "webpack-manifest-plugin": "^2.0.4",
     "webpack-merge": "^4.1.4",
     "webpack-parallel-uglify-plugin": "^1.1.0"
   },

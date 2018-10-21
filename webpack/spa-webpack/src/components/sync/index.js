@@ -9,6 +9,9 @@ const sync = function(){
     console.log("fetch结果",data.message);
   });
   //document.getElementById("app").innerHTML = `<ch1 class="${item.test}">Hello,我是样式!</ch1>`;
+  setTimeout(function(){
+    document.getElementById("app").innerHTML = `<ch1 class="${item.test}">Hello,我是样式!</ch1>`;
+  },1000);
 }
 
 const isCheckArray = function(args){
