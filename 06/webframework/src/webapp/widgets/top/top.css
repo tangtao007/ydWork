@@ -1,0 +1,19 @@
+：root{
+  --mainColor:yellow;
+}
+.widgest-top{
+  background:var(--mainColor);
+  /*
+  开始书写你的bem css
+  */
+  .menu{
+
+    
+  }
+  .menu__left{
+
+  }
+  .menu__middle{
+
+  }
+}

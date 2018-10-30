@@ -63,8 +63,9 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
 }
 
 let UserAPI = (_dec = (0, _awilixKoa.route)('/users'), _dec2 = (0, _awilixKoa.route)('/:id'), _dec3 = (0, _awilixKoa.GET)(), _dec4 = (0, _awilixKoa.before)([(0, _authenticate2.default)()]), _dec(_class = (_class2 = class UserAPI {
-  constructor({ userService }) {
+  constructor({ userService, user }) {
     this.userService = userService;
+    this.user = user;
   }
   /**
    * users/:id users/4 -> 会执行到下面这段async函数里
@@ -74,7 +75,10 @@ let UserAPI = (_dec = (0, _awilixKoa.route)('/users'), _dec2 = (0, _awilixKoa.ro
    */
 
   async getUser(ctx) {
+    console.log("贯彻的User.......", this.user);
+
     const result = await this.userService.get(ctx.params.id);
+    console.log("result", result);
     ctx.body = await ctx.render("index", { data: result });
   }
 }, (_applyDecoratedDescriptor(_class2.prototype, 'getUser', [_dec2, _dec3, _dec4], Object.getOwnPropertyDescriptor(_class2.prototype, 'getUser'), _class2.prototype)), _class2)) || _class);

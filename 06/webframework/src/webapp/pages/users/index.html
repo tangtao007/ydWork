@@ -1,0 +1,18 @@
+{% extends '../common/layout.html' %}
+
+{% block title %}用户登录{% endblock %}
+
+{% block head %}
+  <meta name="description" content="测试这个地方可以使用meta">
+{% endblock %}
+{% parent %}
+    <link rel="stylesheet" href="custom.css">
+{% endblock %}
+
+{% block content %}
+{% include '../../widgets/top/top.html' %}
+{% endblock %}
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+{% include '../../widgets/top/top.js' %}
+{% endblock %}
