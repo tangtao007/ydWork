@@ -8,7 +8,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "",
     "build:dev": "cross-env NODE_ENV=development gulp",
-    "build:prod": "cross-env NODE_ENV=production gulp"
+    "build:prod": "cross-env NODE_ENV=production gulp",
+    "webpack:dev": "webpack --mode development",
+    "webpack:prod": "webpack --mode production",
+    "wchart": "webpack --mode development --profile --json > stats.json",
+    "dev:server": "webpack-dev-server --mode development"
   },
   "author": "tangtao_mail@sina.com",
   "license": "ISC",
@@ -21,6 +25,7 @@
     "koa-static": "^4.0.2",
     "koa-swig": "^2.2.1",
     "lodash": "^4.17.4",
+    "lodash-es": "^4.17.11",
     "log4js": "^2.5.2"
   },
   "devDependencies": {
@@ -33,6 +38,27 @@
     "gulp-rollup": "^2.16.1",
     "gulp-watch": "^5.0.0",
     "nodemon": "^1.18.5",
-    "rollup-plugin-replace": "^2.0.0"
+    "rollup-plugin-replace": "^2.0.0",
+    "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "^1.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.4.4",
+    "node-bash-title": "0.0.2",
+    "progress-bar-webpack-plugin": "^1.11.0",
+    "purify-css": "^1.2.5",
+    "purifycss-webpack": "^0.7.0",
+    "set-iterm2-badge": "0.0.4",
+    "speed-measure-webpack-plugin": "^1.2.3",
+    "style-loader": "^0.23.1",
+    "uglifyjs-webpack-plugin": "^2.0.1",
+    "webpack": "^4.20.2",
+    "webpack-build-notifier": "^0.1.30",
+    "webpack-cli": "^3.1.2",
+    "webpack-dashboard": "^2.0.0",
+    "webpack-deep-scope-plugin": "^1.6.0",
+    "webpack-dev-server": "^3.1.9",
+    "webpack-manifest-plugin": "^2.0.4",
+    "webpack-merge": "^4.1.4",
+    "webpack-parallel-uglify-plugin": "^1.1.0"
   }
 }
