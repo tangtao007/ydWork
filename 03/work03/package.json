@@ -46,7 +46,7 @@
     "gulp-babel": "^7.0.0",
     "html-webpack-plugin": "^2.30.1",
     "jasmine-core": "^2.8.0",
-    "karma": "^1.7.1",
+    "karma": "^6.4.1",
     "karma-chrome-launcher": "^2.2.0",
     "karma-cli": "^1.0.1",
     "karma-jasmine": "^1.1.0",
